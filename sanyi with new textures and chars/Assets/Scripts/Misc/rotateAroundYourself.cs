@@ -10,5 +10,6 @@ public class rotateAroundYourself : MonoBehaviour
     void Update()
     {
         transform.Rotate(0, 0, rotateSpeed*  360*Time.deltaTime);//360 fok*n fordulás minden másodpercben, deltaTime miatt FPS független
+        
     }
 }

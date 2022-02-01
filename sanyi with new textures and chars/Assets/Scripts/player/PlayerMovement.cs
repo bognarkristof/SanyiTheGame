@@ -4,31 +4,45 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private VariableScript vars = new VariableScript();
+
 
     private Rigidbody2D rb; 
     private Animator anim;
     private SpriteRenderer sp;
     private BoxCollider2D coll;
-
+    private int step;
 
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float jumpForce = 20f; //ugrás erõssége
     [SerializeField] private float moveSpeed = 12f;//mozgási sebesség
+    [SerializeField] private AudioSource jumpSound;
+
      private float dirX = 0f; //x tengelyen lévõ pozíció, Raw->ezzel nincs csúszás mikor abbahagyjuk a mozgás
 
     private enum MovementState { idle, running, jumping, falling } //ez tárolja a jelenlegi helyzetünket
 
-    [SerializeField] private AudioSource jumpSound;
+
+    
+
+
+    
+
 
     // Start is called before the first frame update
     private void Start()
     {
+        step = 0;
+        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
     }
+    
+        
+    
 
     // Update is called once per frame
     private void Update()
@@ -52,15 +66,18 @@ public class PlayerMovement : MonoBehaviour
         if (dirX > .1f)
         {
             state = MovementState.running;
+            
             sp.flipX = false;
         }
         else if (dirX < -.1f)
         {
             state = MovementState.running;
+           
             sp.flipX = true;
         }
         else
-        {
+        {   
+            
             state = MovementState.idle;
         }
 

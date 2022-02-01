@@ -7,7 +7,7 @@ public class stickiPlatform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)//elõzõ fuggvény ellentéte, ha leugrik a platformtól akkor eltûnik a parent tulajdonság így nem mozognak együtt
     {
-        if (collision.gameObject.name == "Player" || collision.gameObject.name == "Player_Hero" || collision.gameObject.name == "Player_Bandit")
+        if (collision.gameObject.name == "Player" || collision.gameObject.name == "Player_Hero" || collision.gameObject.name == "Player_Bandit" || collision.gameObject.name == "Player_Cemetry_Hero")
         {
             collision.gameObject.transform.SetParent(null);
         }

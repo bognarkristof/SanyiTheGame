@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public static bool GameIsPaused = false;
     public GameObject pausemenuUI;
+    public GameObject optionsmenuUI;
     public GameObject Player;
-
-
+    
+    
 
     public void SetVolume (float volume)
     {
@@ -38,8 +40,13 @@ public class SettingsMenu : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if(optionsmenuUI.activeSelf == true)
+            {
+                optionsmenuUI.SetActive(false);
+            }
             if (GameIsPaused == true)
             {
                 Resume();
@@ -59,6 +66,7 @@ public class SettingsMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         Player.SetActive(true);
+        
     }
 
     void Pause()
@@ -67,6 +75,7 @@ public class SettingsMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Player.SetActive(false);
+        
     }
 
 

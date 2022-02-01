@@ -8,35 +8,35 @@ public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-    Resolution[] resolutions;
-    
-    private void Start()//azért nem List<Resolution> ként mentjük mert az AddOptions függvény csak egy string listát fogad el, ebben az esetben nem string listát hoznánk létre
+    public List<ResItems> res = new List<ResItems>();
+    public Text screenResText;
+
+
+    private int selectedRes;
+    private void Start()
     {
-        resolutions = Screen.resolutions; //képernyõfelbontások mentése egy tömbbe
-
-        resolutionDropdown.ClearOptions();//jelenlegi dropdown menü beállításainak törlése
-        List<string> options = new List<string>();
-        int currentresolutionIndex = 0;
-        for(int i = 0; i< resolutions.Length; i++)//egy listához adjuk hozzá a lehetséges felbontásokat
+        
+    }
+    public void ResLeft()
+    {
+        selectedRes--;
+        if(selectedRes > 0)
         {
-            string option = resolutions[i].width + " X " + resolutions[i].height;
-            options.Add(option);
-            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)//ha a jelenlegi felbontás megegyezik az egyik elemmel akkor az lesz kiválasztva alapból
-            {
-                currentresolutionIndex = i;
-            }
+            selectedRes = 0;
         }
-
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentresolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        UpdateResLabel();
     }
 
-    public void SetResolution(int resolutionIndex)//felbontás és teljes képernyõ beállítása
+    public void ResRight()
     {
-        Resolution res = resolutions[resolutionIndex];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        selectedRes++;
+        if(selectedRes >res.Count - 1)
+        {
+
+            selectedRes = res.Count - 1;
+        }
+        UpdateResLabel();
+        SetRes();
     }
 
     public void SetVolume (float volume)//dinamikus változóval állítjuk a hangerõt
@@ -48,4 +48,21 @@ public class OptionsMenu : MonoBehaviour
     {
         Screen.fullScreen = isItFull;
     }
+
+    public void UpdateResLabel()
+    {
+        screenResText.text = res[selectedRes].horizontal.ToString() + " x " + res[selectedRes].vertical.ToString();
+        SetRes();
+    }
+
+    public void SetRes()
+    {
+        Screen.SetResolution(res[selectedRes].horizontal, res[selectedRes].vertical, true);
+    }
+}
+
+[System.Serializable]
+public class ResItems
+{
+    public int horizontal, vertical;
 }
