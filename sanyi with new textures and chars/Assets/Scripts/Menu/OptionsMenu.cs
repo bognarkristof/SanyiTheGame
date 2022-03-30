@@ -8,10 +8,12 @@ public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
+    public Slider slider;
 
     Resolution[] resolutions;
     private void Start()
     {
+        
         resolutions = Screen.resolutions;
         List<string> options = new List<string>();
         int currentRes = 0;
@@ -32,8 +34,22 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentRes;
         resolutionDropdown.RefreshShownValue();
+
+        if (System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt") == null)
+        {
+            float tempVolume = 0.33f;
+            SetVolume(tempVolume);
+            Debug.Log("nulla");
+            slider.value = tempVolume;
+        }
+        else
+        {
+            Debug.Log("nem nulla");
+            SetVolume(float.Parse(System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt"))); 
+            Debug.Log(System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt"));
+            slider.value=float.Parse(System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt"));
+        }
     }
-    
 
     public void SetRes(int index)
     {
@@ -44,6 +60,10 @@ public class OptionsMenu : MonoBehaviour
     public void SetVolume (float volume)//dinamikus változóval állítjuk a hangerõt
     {
         audioMixer.SetFloat("volume", volume);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/volume.txt", volume.ToString());
+        Debug.Log(volume);
+       
+        
     }
 
     public void SetFullscreen(bool isItFull)//dinamikus változóval állítjuk a teljes képernyõ beállítást

@@ -4,39 +4,57 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public static bool GameIsPaused = false;
     public GameObject pausemenuUI;
-    public GameObject optionsmenuUI;
-    public GameObject Player;
+    Resolution[] resolutions;
+    public Dropdown resolutionDropdown;
     
-    
-
+    /*
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);
-    }
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/volume.txt", volume.ToString());
+    }*/
 
-    public void SetFullscreen (bool isFullscreen)
+    private void Start()
     {
-        Screen.fullScreen = isFullscreen;
+        
+        resolutions = Screen.resolutions;
+        List<string> options = new List<string>();
+        int currentRes = 0;
+        resolutionDropdown.ClearOptions();
+
+        for(int i = 0; i<resolutions.Length; i++)
+        {
+            //string option = "width" + "x" + "height";
+            string option = resolutions[i].width + "x" + resolutions[i].height;
+
+            options.Add(option);
+            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentRes = i;
+            }
+        }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentRes;
+        resolutionDropdown.RefreshShownValue();
+
+        
     }
 
-    public void LoadMenu()
+    public void SetRes(int index)
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
-
+        Resolution res = resolutions[index];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
     }
 
-    public void CloseGame()
-    {
-        Application.Quit();
-    }
-
+   
 
     private void Update()
     {
@@ -76,6 +94,24 @@ public class SettingsMenu : MonoBehaviour
         GameIsPaused = true;
         Player.SetActive(false);
         
+    }
+
+
+
+    public void SetFullscreen (bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 
 
