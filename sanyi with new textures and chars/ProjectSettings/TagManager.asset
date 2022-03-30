@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collectablePineapple
   - trap
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -43,9 +44,18 @@ TagManager:
   - name: Background
     uniqueID: 341191461
     locked: 0
+  - name: Props
+    uniqueID: 3882622651
+    locked: 0
+  - name: Props 2
+    uniqueID: 829944555
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Terrain
     uniqueID: 2680514641
+    locked: 0
+  - name: Small Ground
+    uniqueID: 804169927
     locked: 0
