@@ -7,7 +7,12 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-   
+    
+    
+    private void Start()
+    {
+        
+    }
 
     public void PlayGame ()//következõ scene elindítása
     {

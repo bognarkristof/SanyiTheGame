@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Assets",
+    "\\Assets\\Scripts",
+    "\\Assets\\Scripts\\Menu",
+    "\\Assets\\Scripts\\Misc",
+    "\\Assets\\Scripts\\player",
+    "\\Assets\\Test",
+    "\\Assets\\Test\\EditMode"
   ],
+  "SelectedNode": "\\Assets\\welcomeText.cs",
   "PreviewInSolutionExplorer": false
 }

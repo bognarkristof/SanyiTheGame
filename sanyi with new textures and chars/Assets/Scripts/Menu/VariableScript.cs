@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VariableScript : MonoBehaviour
+public class VariableScript: MonoBehaviour
 {
 
     public Text data;
 
-    private int CoinNumber;
-    private int SCoinNumber;
-    private int Steps;
-    private string userName;
-    private int ID;
+    public int ID;
+    public string userName;
+    public int Score;
+    public int CoinNumber;
+    public int SCoinNumber;
 
 
     public void setID(int id)
@@ -51,23 +51,13 @@ public class VariableScript : MonoBehaviour
         this.SCoinNumber = SCoinNumber;
     }
 
-    public int getSteps(){
-        return this.Steps;
+    public int getScore(){
+        return this.Score;
     }
 
-    public void setSteps(int Steps){
-        this.Steps = Steps;
+    public void setScore(int score){
+        this.Score = score;
     }
 
-
-    private void Start()
-    {
-        Debug.Log(getCoinNumber());
-        Debug.Log(getSteps());
-        Debug.Log(getID());
-        Debug.Log(getSCoinNumber());
-
-        data.text = "sasdasd" + getUserName().ToString() + " " + getSteps().ToString() + " " + getID().ToString();
-    }
 
 }

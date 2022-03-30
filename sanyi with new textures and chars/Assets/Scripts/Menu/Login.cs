@@ -12,12 +12,16 @@ public class Login : MonoBehaviour
     public InputField nameField;
     public InputField passwordField;
 
-    public Button submitBtn;
+    public Text errorTitle;
+    public Text errorMessage;
+    public GameObject registerError;
+    public GameObject hideAble;
+    public Button hideButton;
+
+
 
     public string[] userData;
 
-
-    
 
     [Obsolete]
     public void loginBtn()
@@ -32,46 +36,87 @@ public class Login : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
         form.AddField("loginPass", pass);
-
-        using(UnityWebRequest www = UnityWebRequest.Post("http://localhost/UnityBackend/Login.php", form))
+       
+        
+        using(UnityWebRequest www = UnityWebRequest.Post("https://sanyithegame.000webhostapp.com/Login.php", form))
         {
             yield return www.SendWebRequest();
+           
 
-            if(www.isNetworkError || www.isHttpError)
+            if (www.downloadHandler.text == "0")
             {
                 Debug.Log(www.error);
+                hideAble.SetActive(false);
+                registerError.SetActive(true);
+                errorMessage.text = "Wrong Username or password!";
+            }
+            else if (www.downloadHandler.text == "1")
+            {
+               
+                hideAble.SetActive(false);
+                registerError.SetActive(true);
+                errorMessage.text = "No user found!";
+            }
+            else if (www.isHttpError)
+            {
+                Debug.Log(www.error);
+                hideAble.SetActive(false);
+                registerError.SetActive(true);
+                errorMessage.text = "Http error!";
+
+            }
+            else if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+                hideAble.SetActive(false);
+                registerError.SetActive(true);
+                errorMessage.text = "No internet connection, try again!";
+
+            }
+            else if(www.downloadHandler.text.Length > 1)
+            {
+                string data = www.downloadHandler.text;
+
+                DataReader reader = new DataReader();
+                userData = data.Split(';');
+                
+                int score = Int32.Parse(reader.GetUserData(userData[0], "Score:"));
+                int sCoins = Int32.Parse(reader.GetUserData(userData[0], "SanyiCoin:"));
+                int coins = Int32.Parse(reader.GetUserData(userData[0], "Coins:"));
+                int id = Int32.Parse(reader.GetUserData(userData[0], "ID:"));
+
+                VariableScript player = new VariableScript();
+                player.setCoinNumber(coins);
+                player.setScore(score);
+                player.setSCoinNumber(sCoins);
+                player.setID(id);
+                player.setUserName(nameField.text);
+
+                SaveData save = new SaveData();
+
+                save.Save(player);
+
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
-                string data = www.downloadHandler.text;
-
-
-                userData = data.Split(';');
-
-                int steps = Int32.Parse(GetUserData(userData[0], "Steps:"));
-                int sCoins = Int32.Parse(GetUserData(userData[0], "SanyiCoin:"));
-                int coins = Int32.Parse(GetUserData(userData[0], "Coins:"));
-                int id = Int32.Parse(GetUserData(userData[0], "ID:"));
-
-                
-                vars.setSteps(steps);
-                vars.setSCoinNumber(sCoins);
-                vars.setCoinNumber(coins);
-                vars.setID(id);
-                
-
-
-                Debug.Log(vars.getID());
-                Debug.Log(vars.getSCoinNumber());
-                Debug.Log(vars.getCoinNumber());
-                Debug.Log(vars.getSteps());
-
-                
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+               
+                hideAble.SetActive(false);
+                registerError.SetActive(true);
+                errorMessage.text = "There was a problem in the login procedure, please try again!";
             }
         }
     }
+
+    public void HideErrorMessage()
+    {
+        hideAble.SetActive(true);
+        registerError.SetActive(false);
+    }
+
+
 
    public void RegisterBtn()
     {
@@ -84,18 +129,6 @@ public class Login : MonoBehaviour
     }
 
 
-    private string GetUserData(string data, string index)
-    {
-        string value = data.Substring(data.IndexOf(index) + index.Length);
-
-
-        if (value.Contains("|"))
-        {
-            value = value.Remove(value.IndexOf("|"));
-        }
-
-
-        return value;
-    }
+    
     
 }

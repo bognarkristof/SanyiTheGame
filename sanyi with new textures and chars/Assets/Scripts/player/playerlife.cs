@@ -9,6 +9,8 @@ public class playerlife : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     [SerializeField] private AudioSource death;
+    public int collectedPineapple;
+    VariableScript player = new VariableScript();
     // Start is called before the first frame update
     private void Start()
     {
@@ -27,7 +29,7 @@ public class playerlife : MonoBehaviour
     }
 
 
-    private void Die()
+    public void Die()
     {
         death.Play();
         rb.bodyType = RigidbodyType2D.Static;
@@ -38,6 +40,17 @@ public class playerlife : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("collectablePineapple"))
+        {
+            collectedPineapple++;
+            Destroy(collision.gameObject);
+        }
+    }
+
+
 
 
 }

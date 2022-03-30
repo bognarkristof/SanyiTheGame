@@ -8,35 +8,37 @@ public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-    public List<ResItems> res = new List<ResItems>();
-    public Text screenResText;
 
-
-    private int selectedRes;
+    Resolution[] resolutions;
     private void Start()
     {
-        
-    }
-    public void ResLeft()
-    {
-        selectedRes--;
-        if(selectedRes > 0)
-        {
-            selectedRes = 0;
-        }
-        UpdateResLabel();
-    }
+        resolutions = Screen.resolutions;
+        List<string> options = new List<string>();
+        int currentRes = 0;
+        resolutionDropdown.ClearOptions();
 
-    public void ResRight()
-    {
-        selectedRes++;
-        if(selectedRes >res.Count - 1)
+        for(int i = 0; i<resolutions.Length; i++)
         {
+            //string option = "width" + "x" + "height";
+            string option = resolutions[i].width + "x" + resolutions[i].height;
 
-            selectedRes = res.Count - 1;
+            options.Add(option);
+            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentRes = i;
+            }
         }
-        UpdateResLabel();
-        SetRes();
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentRes;
+        resolutionDropdown.RefreshShownValue();
+    }
+    
+
+    public void SetRes(int index)
+    {
+        Resolution res = resolutions[index];
+        Screen.SetResolution(res.width, res.height, true);
     }
 
     public void SetVolume (float volume)//dinamikus változóval állítjuk a hangerõt
@@ -49,20 +51,5 @@ public class OptionsMenu : MonoBehaviour
         Screen.fullScreen = isItFull;
     }
 
-    public void UpdateResLabel()
-    {
-        screenResText.text = res[selectedRes].horizontal.ToString() + " x " + res[selectedRes].vertical.ToString();
-        SetRes();
-    }
-
-    public void SetRes()
-    {
-        Screen.SetResolution(res[selectedRes].horizontal, res[selectedRes].vertical, true);
-    }
 }
 
-[System.Serializable]
-public class ResItems
-{
-    public int horizontal, vertical;
-}

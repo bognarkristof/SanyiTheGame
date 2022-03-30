@@ -6,10 +6,28 @@ public class cameraController : MonoBehaviour
 {
 
     [SerializeField]private Transform player;//ide kell behelyezni Editoron belül a követni kívánt gameObjectet
+    public float zoom = 12f;
 
-    // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);//obejktum lekövetése x és y tengelyen, z tengely marad a kamera alaphelyzete
+        zoom = 12f;
+        GetComponent<Camera>().orthographicSize = zoom;
+    }
+    // Update is called once per frame
+    void LateUpdate()
+    {
+        
+        
+        Vector3 temp = transform.position;//jelenlegi kamera helyzet
+
+        temp.x = player.position.x;
+        temp.y = player.position.y;
+
+        transform.position = temp;
+
+         
+
+        
     }
 }

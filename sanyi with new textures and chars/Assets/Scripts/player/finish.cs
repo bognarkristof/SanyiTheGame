@@ -9,7 +9,9 @@ using UnityEngine.SceneManagement;
 public class finish : MonoBehaviour
 {
 
-    private VariableScript vars = new VariableScript();
+    private VariableScript vars;
+    private DataReader reader = new DataReader();
+    playerlife pl = new playerlife();
     private AudioSource finishSound;
     private bool levelCompleted = false;
     private void Start()
@@ -19,41 +21,40 @@ public class finish : MonoBehaviour
         finishSound = GetComponent<AudioSource>();
     }
 
+    [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player" || collision.gameObject.name == "Player_Hero" || collision.gameObject.name == "Player_Bandit")
+        if (collision.gameObject.name == "Player")
         {
             finishSound.Play();
             levelCompleted = true;
             StartCoroutine(UpdateValues());
-            Invoke("CompleteLvL", 3f);
+            Invoke("CompleteLvL", 2f);
             
         }
     }
 
-
-
-
+    [System.Obsolete]
     IEnumerator UpdateValues()
     {
-        int steps = vars.getSteps();
-        int scoin = vars.getSCoinNumber() + 50;
-        int coin = vars.getCoinNumber() + 500;
-        
-        Debug.Log(steps);
-        Debug.Log(scoin);
-        Debug.Log(coin);
-        Debug.Log(vars.getID());
-       
+        vars = reader.GetData();
+        int scr =reader.ScoreMaker(pl.collectedPineapple, vars.getCoinNumber(), vars.getSCoinNumber());
+        vars.setScore(scr);
+        int score = vars.getScore();
+        int scoin = vars.getSCoinNumber() + 5;
+        int coin = vars.getCoinNumber();
+        coin = coin + 50;
+        vars.setSCoinNumber(scoin);
+        vars.setCoinNumber(coin);
 
         WWWForm form = new WWWForm();
         form.AddField("id", vars.getID());
         form.AddField("coins", coin);
         form.AddField("scoins", scoin);
-        form.AddField("steps", steps);
-        
+        form.AddField("score", score);
+        Debug.Log(vars.getID());
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/UnityBackend/DataUpdate.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://sanyithegame.000webhostapp.com/DataUpdate.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -65,14 +66,17 @@ public class finish : MonoBehaviour
             {
                 Debug.Log(www.downloadHandler.text);
                 string data = www.downloadHandler.text;
-
+                Debug.Log(data);
             }
         }
+
+
+        vars.setSCoinNumber(scoin);
+        vars.setCoinNumber(coin);
+        vars.setScore(score);
+        SaveData save = new SaveData();
+        save.Save(vars);
     }
-
-
-
-
 
 
     private void CompleteLvL()

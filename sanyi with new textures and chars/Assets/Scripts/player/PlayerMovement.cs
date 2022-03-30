@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private VariableScript vars = new VariableScript();
 
 
     private Rigidbody2D rb; 
     private Animator anim;
     private SpriteRenderer sp;
     private BoxCollider2D coll;
-    private int step;
 
 
     [SerializeField] private LayerMask jumpableGround;
@@ -24,17 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState { idle, running, jumping, falling } //ez tárolja a jelenlegi helyzetünket
 
 
-    
-
-
-    
-
 
     // Start is called before the first frame update
     private void Start()
-    {
-        step = 0;
-        
+    {        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
@@ -71,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (dirX < -.1f)
         {
+
             state = MovementState.running;
            
             sp.flipX = true;
