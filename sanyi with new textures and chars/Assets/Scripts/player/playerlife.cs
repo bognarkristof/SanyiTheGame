@@ -10,7 +10,7 @@ public class playerlife : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private AudioSource death;
     public int collectedPineapple;
-    VariableScript player = new VariableScript();
+    Player player = new Player();
     // Start is called before the first frame update
     private void Start()
     {

@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class finish : MonoBehaviour
 {
 
-    private VariableScript vars;
+    private Player vars;
     private DataReader reader = new DataReader();
     playerlife pl = new playerlife();
     private AudioSource finishSound;

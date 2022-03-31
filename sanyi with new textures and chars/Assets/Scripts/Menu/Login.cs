@@ -8,7 +8,7 @@ using System.IO;
 
 public class Login : MonoBehaviour
 {
-    private VariableScript vars = new VariableScript();
+    private Player vars = new Player();
     public InputField nameField;
     public InputField passwordField;
 
@@ -88,7 +88,7 @@ public class Login : MonoBehaviour
                 int coins = Int32.Parse(reader.GetUserData(userData[0], "Coins:"));
                 int id = Int32.Parse(reader.GetUserData(userData[0], "ID:"));
 
-                VariableScript player = new VariableScript();
+                Player player = new Player();
                 player.setCoinNumber(coins);
                 player.setScore(score);
                 player.setSCoinNumber(sCoins);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveData : MonoBehaviour
 {
-   public void Save(VariableScript player)
+   public void Save(Player player)
     {
         string data = "ID:" + player.getID() + "|score:" + player.getScore() + "|scoin:" + player.getSCoinNumber() + "|coin:" + player.getCoinNumber() + "|username:" + player.getUserName();
 

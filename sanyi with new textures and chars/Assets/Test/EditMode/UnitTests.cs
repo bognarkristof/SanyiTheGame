@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
-public class MenuTests
+public class UnitTests
 {
    
     [Test]
@@ -14,7 +14,7 @@ public class MenuTests
     {
         int expected = 1;
 
-        VariableScript obj = new VariableScript();
+        Player obj = new Player();
 
         obj.setID(expected);
         int actual = obj.getID();
@@ -26,7 +26,7 @@ public class MenuTests
     {
         int expected = 1;
 
-        VariableScript obj = new VariableScript();
+        Player obj = new Player();
 
         obj.setScore(expected);
         int actual = obj.getScore();
@@ -40,7 +40,7 @@ public class MenuTests
     {
         string expected = "Sanyi";
 
-        VariableScript obj = new VariableScript();
+        Player obj = new Player();
 
         obj.setUserName(expected);
         string actual = obj.getUserName();
@@ -54,7 +54,7 @@ public class MenuTests
     {
         int expected = 5;
 
-        VariableScript obj = new VariableScript();
+        Player obj = new Player();
 
         obj.setCoinNumber(expected);
         int actual = obj.getCoinNumber();
@@ -68,7 +68,7 @@ public class MenuTests
     {
         int expected = 3;
 
-        VariableScript obj = new VariableScript();
+        Player obj = new Player();
 
         obj.setSCoinNumber(expected);
         int actual = obj.getSCoinNumber();
@@ -102,7 +102,7 @@ public class MenuTests
     public void DataReaderGetUserData()
     {
         DataReader reader = new DataReader();
-        VariableScript player = new VariableScript();
+        Player player = new Player();
         string[] userdata;
         string data = "score:1|coin:2;";
 
@@ -120,7 +120,9 @@ public class MenuTests
         string test = System.IO.File.ReadAllText(Application.persistentDataPath + "/PlayerData.txt");
 
 
-        VariableScript player = new VariableScript();
+        Player player = new Player();
+        
+        
         DataReader reader = new DataReader();
 
         int score = Int32.Parse(reader.GetUserData(test, "score:"));
@@ -146,6 +148,55 @@ public class MenuTests
         
 
 
+    }
+
+    [Test]
+    public void SaveDataSaveTest()
+    {
+        string test = System.IO.File.ReadAllText(Application.persistentDataPath + "/PlayerData.txt");
+
+
+        Player player = new Player();
+        DataReader reader = new DataReader();
+
+        int score = Int32.Parse(reader.GetUserData(test, "score:"));
+        int sCoins = Int32.Parse(reader.GetUserData(test, "scoin:"));
+        int coins = Int32.Parse(reader.GetUserData(test, "coin:"));
+        int id = Int32.Parse(reader.GetUserData(test, "ID:"));
+        string username = (reader.GetUserData(test, "username:"));
+
+        player.setID(id);
+        player.setUserName(username);
+        player.setCoinNumber(coins);
+        player.setSCoinNumber(sCoins);
+        player.setScore(score);
+
+        SaveData save = new SaveData();
+
+        save.Save(player);
+
+        Player player2 = new Player();
+        int score2 = Int32.Parse(reader.GetUserData(test, "score:"));
+        int sCoins2 = Int32.Parse(reader.GetUserData(test, "scoin:"));
+        int coins2= Int32.Parse(reader.GetUserData(test, "coin:"));
+        int id2 = Int32.Parse(reader.GetUserData(test, "ID:"));
+        string username2 = (reader.GetUserData(test, "username:"));
+
+
+
+
+        player2.setID(id2);
+        player2.setUserName(username2);
+        player2.setCoinNumber(coins2);
+        player2.setSCoinNumber(sCoins2);
+        player2.setScore(score2);
+
+
+        Assert.AreEqual(player2.getID(), player2.getID());
+        Assert.AreEqual(player.getUserName(), player2.getUserName());
+        Assert.AreEqual(player.getSCoinNumber(), player2.getSCoinNumber());
+        Assert.AreEqual(player.getCoinNumber(), player2.getCoinNumber());
+        Assert.AreEqual(player.getScore(), player2.getScore());
     }
 
 

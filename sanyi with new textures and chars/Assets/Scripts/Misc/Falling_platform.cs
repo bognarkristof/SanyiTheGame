@@ -17,7 +17,7 @@ public class Falling_platform : MonoBehaviour
         }
     }
 
-
+    [System.Obsolete]
     private void DropPlatform()
     {
         gameObject.active = false;
@@ -25,6 +25,7 @@ public class Falling_platform : MonoBehaviour
         
     }
 
+    [System.Obsolete]
     private void SpawnPlatform()
     {
         

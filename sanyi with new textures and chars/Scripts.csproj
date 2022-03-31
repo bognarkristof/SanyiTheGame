@@ -62,9 +62,11 @@
     <Compile Include="Assets\Scripts\Ranged Enemy\AiPatrol.cs" />
     <Compile Include="Assets\Scripts\Traps\FlamethrActivate.cs" />
     <Compile Include="Assets\Scripts\Misc\rotateAroundYourself.cs" />
+    <Compile Include="Assets\Scripts\Ranged Enemy\Bullet_D.cs" />
     <Compile Include="Assets\Scripts\player\DataReader.cs" />
     <Compile Include="Assets\Scripts\Turrets\Bullet_R.cs" />
     <Compile Include="Assets\Scripts\Misc\Quit.cs" />
+    <Compile Include="Assets\Scripts\Menu\welcomeText.cs" />
     <Compile Include="Assets\Scripts\Misc\waypointFollower.cs" />
     <Compile Include="Assets\Scripts\Ranged Enemy\Projectile.cs" />
     <Compile Include="Assets\Scripts\Menu\SettingsMenu.cs" />
@@ -74,7 +76,6 @@
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Misc\PlatformAtcivate.cs" />
     <Compile Include="Assets\Scripts\Ranged Enemy\AiCombat.cs" />
-    <Compile Include="Assets\Scripts\Menu\VariableScript.cs" />
     <Compile Include="Assets\Scripts\Misc\TabInputField.cs" />
     <Compile Include="Assets\Scripts\Menu\Register.cs" />
     <Compile Include="Assets\Scripts\Misc\Falling_platform.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\player\SaveData.cs" />
     <Compile Include="Assets\Scripts\Menu\OptionsMenu.cs" />
+    <Compile Include="Assets\Scripts\Menu\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Scripts.asmdef" />

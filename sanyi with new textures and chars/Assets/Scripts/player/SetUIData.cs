@@ -14,7 +14,7 @@ public class SetUIData : MonoBehaviour
     DataReader reader = new DataReader();
 
 
-    VariableScript player;
+    Player player;
 
     private void Start()
     {

@@ -6,8 +6,9 @@
     "\\sanyi with new textures and chars\\Assets\\Scripts",
     "\\sanyi with new textures and chars\\Assets\\Scripts\\Menu",
     "\\sanyi with new textures and chars\\Assets\\Scripts\\Misc",
-    "\\sanyi with new textures and chars\\Assets\\Scripts\\player"
+    "\\sanyi with new textures and chars\\Assets\\Scripts\\player",
+    "\\sanyi with new textures and chars\\Assets\\Scripts\\Ranged Enemy"
   ],
-  "SelectedNode": "\\sanyi with new textures and chars\\Assets\\Scripts\\Menu\\Login.cs",
+  "SelectedNode": "\\sanyi with new textures and chars\\Assets\\Scripts\\Misc\\PlatformAtcivate.cs",
   "PreviewInSolutionExplorer": false
 }

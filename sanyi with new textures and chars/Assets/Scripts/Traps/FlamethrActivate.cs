@@ -24,15 +24,13 @@ public class FlamethrActivate : MonoBehaviour
     }
 
     // Update is called once per frame
+    [System.Obsolete]
     void Update()
     {
         Activate();
     }
 
-
-    
-
-
+    [System.Obsolete]
     private void Activate()
     {
         if(downTimeBtwSpits <=0 )
@@ -66,6 +64,7 @@ public class FlamethrActivate : MonoBehaviour
 
     }
 
+    [System.Obsolete]
     private void Deactivate()
     {
         capsule.active = false;

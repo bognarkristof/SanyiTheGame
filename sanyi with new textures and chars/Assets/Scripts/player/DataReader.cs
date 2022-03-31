@@ -22,13 +22,13 @@ public class DataReader : MonoBehaviour
     
 
     // Start is called before the first frame update
-    public VariableScript GetData()
+    public Player GetData()
     {
        
         string test = System.IO.File.ReadAllText(Application.persistentDataPath + "/PlayerData.txt");
 
         Debug.Log(test);
-        VariableScript player = new VariableScript();
+        Player player = new Player();
 
         int score = Int32.Parse(GetUserData(test, "score:"));
         int sCoins = Int32.Parse(GetUserData(test, "scoin:"));
@@ -50,7 +50,7 @@ public class DataReader : MonoBehaviour
     public int ScoreMaker(int pineapple, int coin, int scoin)
     {
         
-        return ((pineapple * 10) + coin + scoin);
+        return ((pineapple * 10 + 10) + coin + scoin);
     }
     
 }

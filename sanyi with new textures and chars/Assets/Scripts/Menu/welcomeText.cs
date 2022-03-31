@@ -11,7 +11,7 @@ public class welcomeText : MonoBehaviour
     void Start()
     {
         DataReader read = new DataReader();
-        VariableScript player = read.GetData();
+        Player player = read.GetData();
 
         mainMenuText.text = "Hi, " + player.getUserName() + "!";
         
