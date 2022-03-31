@@ -63,14 +63,15 @@ public class Register : MonoBehaviour
             yield return www.SendWebRequest();
 
             
-            if(www.downloadHandler.text == "0")
+            if(www.downloadHandler.text.Contains("0"))
             {
                 Debug.Log(www.error);
                 registerPanel.SetActive(false);
                 errorPanel.SetActive(true);
-                errorMessage.text = www.error + "\n Registration error!";
+                errorLabel.text = "Registration error";
+                errorMessage.text = "username already taken!";
             }
-            else if(www.downloadHandler.text == "2")
+            else if(www.downloadHandler.text.Contains("2"))
             {
                 Debug.Log(www.error);
                 registerPanel.SetActive(false);
@@ -91,9 +92,15 @@ public class Register : MonoBehaviour
                 errorPanel.SetActive(true);
                 errorMessage.text = " Network error!";
             }
-            else
+            else if(www.downloadHandler.text.Contains("1"))
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Login");
+            }else
+            {
+                Debug.Log(www.error);
+                registerPanel.SetActive(false);
+                errorPanel.SetActive(true);
+                errorMessage.text = "Something went wrong during registration!";
             }
         }
 

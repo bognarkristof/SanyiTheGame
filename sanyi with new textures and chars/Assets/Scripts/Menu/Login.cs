@@ -41,24 +41,25 @@ public class Login : MonoBehaviour
         using(UnityWebRequest www = UnityWebRequest.Post("https://sanyithegame.000webhostapp.com/Login.php", form))
         {
             yield return www.SendWebRequest();
+            Debug.Log(www.downloadHandler.text);
            
-
-            if (www.downloadHandler.text == "0")
+            if (www.downloadHandler.text.Contains("0") && www.downloadHandler.text.Length < 2)
             {
-                Debug.Log(www.error);
+                errorTitle.text = "Login error";
                 hideAble.SetActive(false);
                 registerError.SetActive(true);
                 errorMessage.text = "Wrong Username or password!";
             }
-            else if (www.downloadHandler.text == "1")
+            else if (www.downloadHandler.text.Contains("1") && www.downloadHandler.text.Length < 2)
             {
-               
+                errorTitle.text = "Login error";
                 hideAble.SetActive(false);
                 registerError.SetActive(true);
                 errorMessage.text = "No user found!";
             }
             else if (www.isHttpError)
             {
+                errorTitle.text = "Login error";
                 Debug.Log(www.error);
                 hideAble.SetActive(false);
                 registerError.SetActive(true);
@@ -67,19 +68,21 @@ public class Login : MonoBehaviour
             }
             else if (www.isNetworkError)
             {
+                errorTitle.text = "Login error";
                 Debug.Log(www.error);
                 hideAble.SetActive(false);
                 registerError.SetActive(true);
                 errorMessage.text = "No internet connection, try again!";
 
             }
-            else if(www.downloadHandler.text.Length > 1)
+            else if(www.downloadHandler.text.Contains("ID"))
             {
                 string data = www.downloadHandler.text;
 
                 DataReader reader = new DataReader();
                 userData = data.Split(';');
-                
+
+                Debug.Log(www.downloadHandler.text);
                 int score = Int32.Parse(reader.GetUserData(userData[0], "Score:"));
                 int sCoins = Int32.Parse(reader.GetUserData(userData[0], "SanyiCoin:"));
                 int coins = Int32.Parse(reader.GetUserData(userData[0], "Coins:"));
@@ -105,6 +108,7 @@ public class Login : MonoBehaviour
                
                 hideAble.SetActive(false);
                 registerError.SetActive(true);
+                errorTitle.text = "Login error";
                 errorMessage.text = "There was a problem in the login procedure, please try again!";
             }
         }

@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\sanyi with new textures and chars",
+    "\\sanyi with new textures and chars\\Assets",
+    "\\sanyi with new textures and chars\\Assets\\Scripts",
+    "\\sanyi with new textures and chars\\Assets\\Scripts\\Menu",
+    "\\sanyi with new textures and chars\\Assets\\Scripts\\Misc",
+    "\\sanyi with new textures and chars\\Assets\\Scripts\\player"
   ],
-  "SelectedNode": "\\sanyi_sorted.sln",
+  "SelectedNode": "\\sanyi with new textures and chars\\Assets\\Scripts\\Menu\\Login.cs",
   "PreviewInSolutionExplorer": false
 }

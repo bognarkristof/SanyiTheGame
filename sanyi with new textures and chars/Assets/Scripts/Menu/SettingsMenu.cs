@@ -13,7 +13,9 @@ public class SettingsMenu : MonoBehaviour
     public GameObject pausemenuUI;
     Resolution[] resolutions;
     public Dropdown resolutionDropdown;
-    
+    public GameObject Player;
+    public GameObject optionsmenuUI;
+
     /*
     public void SetVolume (float volume)
     {
