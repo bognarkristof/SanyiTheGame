@@ -63,10 +63,7 @@ public class SettingsMenu : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(optionsmenuUI.activeSelf == true)
-            {
-                optionsmenuUI.SetActive(false);
-            }
+            
             if (GameIsPaused == true)
             {
                 Resume();
@@ -85,7 +82,7 @@ public class SettingsMenu : MonoBehaviour
         pausemenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        Player.SetActive(true);
+        
         
     }
 
@@ -94,7 +91,7 @@ public class SettingsMenu : MonoBehaviour
         pausemenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        Player.SetActive(false);
+        
         
     }
 
@@ -103,6 +100,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+       
     }
     public void LoadMenu()
     {

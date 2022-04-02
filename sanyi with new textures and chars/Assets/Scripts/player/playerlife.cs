@@ -11,6 +11,7 @@ public class playerlife : MonoBehaviour
     [SerializeField] private AudioSource death;
     public int collectedPineapple;
     Player player = new Player();
+    
     // Start is called before the first frame update
     private void Start()
     {
