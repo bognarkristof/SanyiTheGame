@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,10 +26,10 @@ public class waypointFollower : MonoBehaviour
                 }
             }
             transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, Time.deltaTime * platformSpeed);
-        } catch(System.IO.IOException e)
+        } catch(Exception e)
         {
-            Debug.Log(e.StackTrace + "sadshakidh");
-            
+            Debug.Log(e.StackTrace);
+
         }
         
     }

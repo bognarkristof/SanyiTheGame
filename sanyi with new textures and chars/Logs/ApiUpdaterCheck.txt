@@ -1299,3 +1299,13 @@ candidates check time : 37ms
 >>>>>>> Stashed changes
 console write time    : 0ms
 
+[api-updater (non-obsolete-error-filter)] 2022. 04. 04. 8:02:02 : Starting C:/Program Files/Unity/Hub/Editor/2020.3.32f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 2118,0611ms
+moved types parse time: 173ms
+candidates parse time : 2ms
+C# parse time         : 1524ms
+candidates check time : 74ms
+console write time    : 1ms
+

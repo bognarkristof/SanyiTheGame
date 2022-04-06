@@ -68,8 +68,8 @@
     <Compile Include="Assets\Scripts\Misc\Quit.cs" />
     <Compile Include="Assets\Scripts\Menu\welcomeText.cs" />
     <Compile Include="Assets\Scripts\Misc\waypointFollower.cs" />
+    <Compile Include="Assets\Scripts\Menu\Player.cs" />
     <Compile Include="Assets\Scripts\Ranged Enemy\Projectile.cs" />
-    <Compile Include="Assets\Scripts\Menu\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\Misc\stickiPlatform.cs" />
     <Compile Include="Assets\Scripts\player\finish.cs" />
     <Compile Include="Assets\Scripts\Menu\Login.cs" />
@@ -85,7 +85,6 @@
     <Compile Include="Assets\Scripts\player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\player\SaveData.cs" />
     <Compile Include="Assets\Scripts\Menu\OptionsMenu.cs" />
-    <Compile Include="Assets\Scripts\Menu\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Scripts.asmdef" />

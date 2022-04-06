@@ -5,15 +5,8 @@
     "\\sanyi with new textures and chars\\Assets",
     "\\sanyi with new textures and chars\\Assets\\Scripts",
     "\\sanyi with new textures and chars\\Assets\\Scripts\\Menu",
-    "\\sanyi with new textures and chars\\Assets\\Scripts\\Misc",
-<<<<<<< Updated upstream
-    "\\sanyi with new textures and chars\\Assets\\Scripts\\player",
-    "\\sanyi with new textures and chars\\Assets\\Scripts\\Ranged Enemy"
-  ],
-  "SelectedNode": "\\sanyi with new textures and chars\\Assets\\Scripts\\Misc\\PlatformAtcivate.cs",
-=======
     "\\sanyi with new textures and chars\\Assets\\Scripts\\player"
   ],
->>>>>>> Stashed changes
+  "SelectedNode": "\\sanyi with new textures and chars\\Assets\\Scripts\\player\\finish.cs",
   "PreviewInSolutionExplorer": false
 }

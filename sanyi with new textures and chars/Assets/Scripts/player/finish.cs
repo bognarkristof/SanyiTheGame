@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
@@ -14,10 +15,11 @@ public class finish : MonoBehaviour
     playerlife pl = new playerlife();
     private AudioSource finishSound;
     private bool levelCompleted = false;
+    public AudioMixer audiomixer;
     private void Start()
     {
-        
 
+        audiomixer.SetFloat("volume", -0.003f);
         finishSound = GetComponent<AudioSource>();
     }
 
@@ -52,7 +54,6 @@ public class finish : MonoBehaviour
         form.AddField("coins", coin);
         form.AddField("scoins", scoin);
         form.AddField("score", score);
-        Debug.Log(vars.getID());
 
         using (UnityWebRequest www = UnityWebRequest.Post("https://sanyithegame.000webhostapp.com/DataUpdate.php", form))
         {
@@ -64,9 +65,7 @@ public class finish : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
                 string data = www.downloadHandler.text;
-                Debug.Log(data);
             }
         }
 

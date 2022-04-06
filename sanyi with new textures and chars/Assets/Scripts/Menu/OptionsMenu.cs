@@ -3,14 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-    public Slider slider;
+    private bool GameIsPaused;
+    public GameObject pausemenuUI;
+    public Toggle mutetgl;
 
     Resolution[] resolutions;
+
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            if (GameIsPaused == true)
+            {
+                Resume();
+
+            }
+            else
+            {
+                Pause();
+            }
+        }
+
+    }
+
+    public void Resume()
+    {
+        pausemenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+
+
+    }
+
+    void Pause()
+    {
+        pausemenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+
+    }
+
+
+
     private void Start()
     {
         
@@ -22,32 +66,35 @@ public class OptionsMenu : MonoBehaviour
         for(int i = 0; i<resolutions.Length; i++)
         {
             //string option = "width" + "x" + "height";
-            string option = resolutions[i].width + "x" + resolutions[i].height;
-
-            options.Add(option);
-            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            if(resolutions[i].width > 1280 && resolutions[i].height > 720)
             {
-                currentRes = i;
+                string option = resolutions[i].width + "x" + resolutions[i].height;
+
+                options.Add(option);
+                if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+                {
+                    currentRes = i;
+                }
             }
+           
         }
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentRes;
         resolutionDropdown.RefreshShownValue();
 
-        if (System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt") == null)
+        audioMixer.SetFloat("volume", 0.3f);
+    }
+
+    public void Mute(bool isMute)
+    {
+        if (isMute)
         {
-            float tempVolume = 0.33f;
-            SetVolume(tempVolume);
-            Debug.Log("nulla");
-            slider.value = tempVolume;
+            audioMixer.SetFloat("volume", 0.3f);
         }
         else
         {
-            Debug.Log("nem nulla");
-            SetVolume(float.Parse(System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt"))); 
-            Debug.Log(System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt"));
-            slider.value=float.Parse(System.IO.File.ReadAllText(Application.persistentDataPath + "/volume.txt"));
+            audioMixer.SetFloat("volume", -80f);
         }
     }
 
@@ -57,18 +104,21 @@ public class OptionsMenu : MonoBehaviour
         Screen.SetResolution(res.width, res.height, true);
     }
 
-    public void SetVolume (float volume)//dinamikus változóval állítjuk a hangerõt
-    {
-        audioMixer.SetFloat("volume", volume);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/volume.txt", volume.ToString());
-        Debug.Log(volume);
-       
-        
-    }
 
     public void SetFullscreen(bool isItFull)//dinamikus változóval állítjuk a teljes képernyõ beállítást
     {
         Screen.fullScreen = isItFull;
+    }
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 
 }
