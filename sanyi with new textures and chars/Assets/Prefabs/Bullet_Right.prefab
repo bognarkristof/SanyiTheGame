@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2453546442497543048}
   - component: {fileID: 2453546442497543050}
   - component: {fileID: 8385806136883252426}
-  - component: {fileID: 5225029197529603064}
   m_Layer: 5
   m_Name: Bullet_Right
   m_TagString: Untagged
@@ -120,15 +119,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   travelTime: 3
---- !u!114 &5225029197529603064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453546442497543052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9701823bced7c3c4c9295cd3f9413f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

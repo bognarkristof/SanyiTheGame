@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2445969972270108843}
   - component: {fileID: 2445969972270108841}
   - component: {fileID: 5184820105685030491}
-  - component: {fileID: -5676522846487943366}
   m_Layer: 5
   m_Name: Bullet_Down
   m_TagString: Untagged
@@ -120,15 +119,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   travelTime: 4
---- !u!114 &-5676522846487943366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2445969972270108847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9701823bced7c3c4c9295cd3f9413f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

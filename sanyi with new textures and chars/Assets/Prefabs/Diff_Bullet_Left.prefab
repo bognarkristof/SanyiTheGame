@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2905306197618426874}
   - component: {fileID: 2905306197618426875}
   - component: {fileID: 2905306197618426872}
-  - component: {fileID: -6174555708187644776}
   m_Layer: 5
   m_Name: Diff_Bullet_Left
   m_TagString: Untagged
@@ -120,15 +119,3 @@ CircleCollider2D:
   m_Offset: {x: -0.03447056, y: -0.08041763}
   serializedVersion: 2
   m_Radius: 0.48747158
---- !u!114 &-6174555708187644776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2905306197618426878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9701823bced7c3c4c9295cd3f9413f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

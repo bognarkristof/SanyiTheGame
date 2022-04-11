@@ -13,22 +13,15 @@ public class finish : MonoBehaviour
     private Player vars;
     private DataReader reader = new DataReader();
     playerlife pl = new playerlife();
-    private AudioSource finishSound;
     private bool levelCompleted = false;
-    public AudioMixer audiomixer;
-    private void Start()
-    {
-
-        audiomixer.SetFloat("volume", -0.003f);
-        finishSound = GetComponent<AudioSource>();
-    }
+   
 
     [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            finishSound.Play();
+            
             levelCompleted = true;
             StartCoroutine(UpdateValues());
             Invoke("CompleteLvL", 2f);

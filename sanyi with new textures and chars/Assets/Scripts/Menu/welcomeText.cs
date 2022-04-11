@@ -14,12 +14,7 @@ public class welcomeText : MonoBehaviour
         Player player = read.GetData();
 
         mainMenuText.text = "Hi, " + player.getUserName() + "!";
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

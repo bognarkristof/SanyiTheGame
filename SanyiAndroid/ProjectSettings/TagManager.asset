@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - collectablePineapple
+  - trap
+  - wall
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - Waypoint
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 341191461
+    locked: 0
+  - name: Props
+    uniqueID: 3882622651
+    locked: 0
+  - name: Props 2
+    uniqueID: 829944555
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 2680514641
+    locked: 0
+  - name: Small Ground
+    uniqueID: 804169927
+    locked: 0

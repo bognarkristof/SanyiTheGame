@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6807326051477784650}
   - component: {fileID: 6807326051477784648}
   - component: {fileID: 582261531783352072}
-  - component: {fileID: 376877525606123292}
   m_Layer: 5
   m_Name: Diff_Bullet_Right
   m_TagString: Untagged
@@ -120,15 +119,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   travelTime: 1
---- !u!114 &376877525606123292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6807326051477784654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9701823bced7c3c4c9295cd3f9413f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

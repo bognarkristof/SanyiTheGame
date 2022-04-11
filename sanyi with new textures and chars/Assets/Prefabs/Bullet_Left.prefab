@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5310959927108148634}
   - component: {fileID: 5310959927108148635}
   - component: {fileID: 5310959927108148632}
-  - component: {fileID: -8733986078974795275}
   m_Layer: 5
   m_Name: Bullet_Left
   m_TagString: Untagged
@@ -120,15 +119,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.2183075}
   serializedVersion: 2
   m_Radius: 0.9700813
---- !u!114 &-8733986078974795275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5310959927108148638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9701823bced7c3c4c9295cd3f9413f1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

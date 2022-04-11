@@ -11,7 +11,6 @@ public class OptionsMenu : MonoBehaviour
     public Dropdown resolutionDropdown;
     private bool GameIsPaused;
     public GameObject pausemenuUI;
-    public Toggle mutetgl;
 
     Resolution[] resolutions;
 
@@ -38,15 +37,17 @@ public class OptionsMenu : MonoBehaviour
     public void Resume()
     {
         pausemenuUI.SetActive(false);
+        
         Time.timeScale = 1f;
         GameIsPaused = false;
-
+        
 
     }
 
     void Pause()
     {
         pausemenuUI.SetActive(true);
+        
         Time.timeScale = 0f;
         GameIsPaused = true;
 
@@ -65,17 +66,18 @@ public class OptionsMenu : MonoBehaviour
 
         for(int i = 0; i<resolutions.Length; i++)
         {
-            //string option = "width" + "x" + "height";
-            if(resolutions[i].width > 1280 && resolutions[i].height > 720)
-            {
+            
+           
+            
                 string option = resolutions[i].width + "x" + resolutions[i].height;
 
                 options.Add(option);
                 if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
                 {
                     currentRes = i;
+                    SetRes(currentRes);
                 }
-            }
+            
            
         }
 
@@ -83,14 +85,14 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.value = currentRes;
         resolutionDropdown.RefreshShownValue();
 
-        audioMixer.SetFloat("volume", 0.3f);
+        audioMixer.SetFloat("volume", -20f);
     }
 
     public void Mute(bool isMute)
     {
         if (isMute)
         {
-            audioMixer.SetFloat("volume", 0.3f);
+            audioMixer.SetFloat("volume", -20f);
         }
         else
         {
