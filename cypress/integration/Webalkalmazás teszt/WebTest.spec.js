@@ -31,7 +31,7 @@ describe('Sanyi Web Test', () =>{
         
     })
 
-    it('Login and edit and admin edit', () =>{
+    it('Login and edit the user propertys', () =>{
         
         cy.visit('https://sanyithegame.000webhostapp.com/');           //Sanyi weboldal megnyitása
         
@@ -60,6 +60,10 @@ describe('Sanyi Web Test', () =>{
 
         cy.get('.login-Title > form > :nth-child(3) > input').click({force:true}); //logout
 
+        
+    })
+    it('User property change and delete by admin',()=>{
+        cy.visit('https://sanyithegame.000webhostapp.com/');
         cy.get('.drop_btn').click(); //account button
         cy.get(':nth-child(1) > input').type('qqqqq'); //felhasználónév
         cy.get('.user-details-login > :nth-child(2) > input').type('qqqqq321'); //jelszó
@@ -69,8 +73,6 @@ describe('Sanyi Web Test', () =>{
         cy.get(':nth-child(4) > input').click({force:true});
 
         cy.get(':nth-child(1) > :nth-child(7) > .btn-info').click({force:true});
-        cy.get(':nth-child(1) > input').clear({force:true}).type('666', {force:true});
-        cy.get('.user-details > :nth-child(2) > input').clear({force:true}).type('aa', {force:true}); 
         cy.get('.user-details > :nth-child(3) > input').clear({force:true}).type('126', {force:true}); //coin: 126
         cy.get('.user-details > :nth-child(4) > input').clear({force:true}).type('127', {force:true}); //score: 127
         cy.get('.user-details > :nth-child(5) > input').clear({force:true}).type('128', {force:true}); //Sanyi: 128
@@ -78,7 +80,7 @@ describe('Sanyi Web Test', () =>{
         cy.get(':nth-child(1) > :nth-child(7) > .btn-primary').click({force:true}); //admin user
         cy.get('.btn-warning').click({force:true});
         cy.get(':nth-child(1) > :nth-child(7) > .btn-danger').click({force:true}); //delete user
-    });
+    })
 
 
 

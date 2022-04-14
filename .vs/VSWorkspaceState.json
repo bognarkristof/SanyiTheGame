@@ -4,11 +4,13 @@
     "\\sanyi with new textures and chars",
     "\\sanyi with new textures and chars\\Assets",
     "\\sanyi with new textures and chars\\Assets\\Scripts",
-    "\\sanyi with new textures and chars\\Assets\\Scripts\\Misc",
     "\\sanyi with new textures and chars\\Assets\\Scripts\\player",
     "\\sanyi with new textures and chars\\Assets\\Scripts\\Ranged Enemy",
     "\\sanyi with new textures and chars\\Assets\\Scripts\\Traps",
-    "\\sanyi with new textures and chars\\Assets\\Scripts\\Turrets"
+    "\\sanyi with new textures and chars\\Assets\\Scripts\\Turrets",
+    "\\sanyi with new textures and chars\\Assets\\Test",
+    "\\sanyi with new textures and chars\\Assets\\Test\\EditMode"
   ],
+  "SelectedNode": "\\sanyi with new textures and chars\\Assets\\Test\\EditMode\\UnitTests.cs",
   "PreviewInSolutionExplorer": false
 }

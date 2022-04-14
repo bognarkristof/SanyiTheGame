@@ -99,7 +99,6 @@ public class Login : MonoBehaviour
 
                 save.Save(player);
 
-
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
 
             }

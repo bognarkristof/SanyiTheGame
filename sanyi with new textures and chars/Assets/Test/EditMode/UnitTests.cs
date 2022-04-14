@@ -46,7 +46,6 @@ public class UnitTests
         string actual = obj.getUserName();
 
         Assert.AreEqual(expected, actual);
-
     }
 
     [Test]
@@ -119,9 +118,7 @@ public class UnitTests
     {
         string test = System.IO.File.ReadAllText(Application.persistentDataPath + "/PlayerData.txt");
 
-
         Player player = new Player();
-        
         
         DataReader reader = new DataReader();
 
@@ -130,9 +127,6 @@ public class UnitTests
         int coins = Int32.Parse(reader.GetUserData(test, "coin:"));
         int id = Int32.Parse(reader.GetUserData(test, "ID:"));
         string username = (reader.GetUserData(test, "username:"));
-
-
-
 
         player.setID(id);
         player.setUserName(username);
@@ -145,16 +139,13 @@ public class UnitTests
         Assert.AreEqual(player.getSCoinNumber(), sCoins);
         Assert.AreEqual(player.getCoinNumber(), coins);
         Assert.AreEqual(player.getScore(), score);
-        
-
-
     }
 
     [Test]
     public void SaveDataSaveTest()
     {
-        string test = System.IO.File.ReadAllText(Application.persistentDataPath + "/PlayerData.txt");
-
+        string test = System.IO.File.ReadAllText(
+            Application.persistentDataPath + "/PlayerData.txt");
 
         Player player = new Player();
         DataReader reader = new DataReader();
@@ -182,15 +173,11 @@ public class UnitTests
         int id2 = Int32.Parse(reader.GetUserData(test, "ID:"));
         string username2 = (reader.GetUserData(test, "username:"));
 
-
-
-
         player2.setID(id2);
         player2.setUserName(username2);
         player2.setCoinNumber(coins2);
         player2.setSCoinNumber(sCoins2);
         player2.setScore(score2);
-
 
         Assert.AreEqual(player2.getID(), player2.getID());
         Assert.AreEqual(player.getUserName(), player2.getUserName());
